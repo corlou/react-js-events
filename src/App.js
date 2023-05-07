@@ -48,8 +48,25 @@ function App() {
   }
 
   // onblur & onfocus
+  function logOnBlur(event) {
+    console.log("Element lost focus!");
+  }
+
+  function logOnFocus(event) {
+    console.log(`Focus gained!! Target was ${event.target.tagName}`);
+  }
 
   // onoffline & ononline
+  function logGoneOffline(event) {
+    // Show a banner telling the user that no new content will load
+    // Queueing API requests to wait until we are online again
+  }
+
+  function logGoneOnline(event) {
+    // Make an API request to say that User XYZ is now online
+    // Remove any "You are offline" banners
+    // Work through any queued API requests from onoffline
+  }
 
   // oncontextmenu (it's in Ed)
 
@@ -61,6 +78,9 @@ function App() {
       onClick={logWhenClicked}
       tabIndex={0}
       onKeyDown={logKeyPress}
+
+      onBlur={logOnBlur}
+      onFocus={logOnFocus}
 
       style={{ backgroundColor: "lightgrey", width: "100vw", height: "100vh" }
       }>
