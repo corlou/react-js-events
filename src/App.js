@@ -33,21 +33,46 @@ function App() {
   }
 
   // onkeydown
+  function logKeyPress(event) {
+
+    switch (event.key) {
+      case "ArrowLeft":
+      case "ArrowRight":
+      case "ArrowUp":
+      case "ArrowDown":
+        console.log("User pressed " + event.key)
+        break;
+      default:
+        break;
+    }
+  }
 
   // onblur & onfocus
 
-  // oncontextmenu
+  // onoffline & ononline
+
+  // oncontextmenu (it's in Ed)
+
+  // ondrag, ondragstart, ondragover, ondrop
 
   return (
 
-    <div className="App" onClick={logWhenClicked} style={{ backgroundColor: "lightgrey", width: "100vw", height: "100vh" }}>
+    <div className="App"
+      onClick={logWhenClicked}
+      tabIndex={0}
+      onKeyDown={logKeyPress}
+
+      style={{ backgroundColor: "lightgrey", width: "100vw", height: "100vh" }
+      }>
 
       <h1 onMouseOver={(event) => { mouseOverHeading(event) }}
         onMouseOut={(event) => { mouseOutOfHeading(event) }}>Cool Website Name</h1>
 
-      {someFruit.map((fruit) => {
-        return <p key={fruit} onClick={(event) => fruitClickLogger(fruit, event)}> Super awesome {fruit}</p>
-      })}
+      {
+        someFruit.map((fruit) => {
+          return <p key={fruit} onClick={(event) => fruitClickLogger(fruit, event)}> Super awesome {fruit}</p>
+        })
+      }
     </div >
   );
 }
